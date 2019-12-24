@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_alarm"
+        android:title="Báo thức"
+        android:icon="@drawable/ic_access_alarms_black_24dp"/>
+    <item
+        android:id="@+id/navigation_stopwatch"
+        android:title="Bấm giờ"
+        android:icon="@drawable/ic_stopwatch"/>
+    <item
+        android:id="@+id/navigation_timer"
+        android:title="Hẹn giờ"
+        android:icon="@drawable/ic_timer"/>
+</menu>

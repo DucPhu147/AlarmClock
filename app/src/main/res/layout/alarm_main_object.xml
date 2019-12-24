@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/alarm_object_background"
+    android:id="@+id/alarm_item_layout">
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="06:20"
+        android:layout_marginTop="10dp"
+        android:textColor="#000000"
+        android:textSize="35dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/txtRepeatDay"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Switch
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/imgRemove"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtRepeatDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginBottom="10dp"
+        android:text="T2 T3 T4 T5 T6 T7 CN"
+        android:textColor="#000000"
+        app:layout_constraintTop_toBottomOf="@id/txtTime"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLabel"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="Nhãn báo thức qewqeqwqqeqeqweqewqeq"
+        android:layout_marginLeft="15dp"
+        android:textColor="#000000"
+        android:layout_marginBottom="10dp"
+        android:textSize="13dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/txtRepeatDay" />
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:id="@+id/imgCancelMethod"
+        app:layout_constraintRight_toLeftOf="@+id/status"
+        android:src="@drawable/ic_access_alarms_black_24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="5dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/imgRemove"
+        android:src="@drawable/three_dots"
+        app:layout_constraintBottom_toBottomOf="parent">
+    </ImageView>
+</androidx.constraintlayout.widget.ConstraintLayout>

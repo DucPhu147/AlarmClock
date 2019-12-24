@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Alarm.AlarmMain.AlarmMainFragment">
+    <item
+        android:id="@+id/preview"
+        android:title="Xem trước" />
+    <item
+        android:id="@+id/remove"
+        android:title="Xóa" />
+</menu>

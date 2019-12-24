@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Độ khó của bài toán"
+        android:textSize="20dp"
+        android:layout_marginVertical="20dp"
+        android:textColor="@color/colorAccent"/>
+    <View
+        android:layout_width="500dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="@color/Grey"
+        android:layout_height="0.1dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="14 + 25 = ???"
+        android:textSize="15dp"
+        android:layout_marginVertical="30dp"
+        android:id="@+id/txtMathDiff"
+        android:textColor="@color/colorAccent"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:id="@+id/radioMathEasy"
+                android:text="Dễ"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_marginHorizontal="15dp"
+                android:id="@+id/radioMathNormal"
+                android:text="Trung bình"/>
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:id="@+id/radioMathHard"
+                android:text="Khó"/>
+        </RadioGroup>
+    </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:stretchColumns="*">
+            <TableRow android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="Hủy"
+                    android:textSize="13dp"
+                    android:id="@+id/btnMathHuy"
+                    android:background="@drawable/button_background"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintRight_toLeftOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:text="Xác nhận"
+                    android:textSize="13dp"
+                    android:id="@+id/btnMathXacNhan"
+                    android:textColor="@color/colorAccent"
+                    android:background="@drawable/button_background"/>
+            </TableRow>
+        </TableLayout>
+</LinearLayout>

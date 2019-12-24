@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/cancelalarm_bg"
+    tools:context=".Alarm.CancelAlarmScreen.CancelAlarmScreenActivity">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:fontFamily="monospace"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="300dp"
+        android:textStyle="bold"
+        android:text="07:30"
+        android:id="@+id/txtAlarmTime"
+        android:textColor="@color/White"
+        android:textSize="55dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/txtAlarmTime"
+        android:textAlignment="center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="BÁO THỨC ĐANG KÊU!!!"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="30dp"
+        android:textColor="@color/White"
+        android:id="@+id/txtCancelLabel"
+        android:textSize="30dp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BÁO LẠI"
+        android:paddingVertical="13dp"
+        android:textSize="20dp"
+        android:textColor="@color/White"
+        android:background="@drawable/cancel_alarm_button2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btnDelay"/>
+    <Button
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:text="LOẠI BỎ"
+        android:textSize="20dp"
+        android:textColor="@color/White"
+        android:background="@drawable/cancel_alarm_button1"
+        app:layout_constraintBottom_toTopOf="@id/btnDelay"
+        app:layout_constraintTop_toBottomOf="@id/txtCancelLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/btnCancel"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
