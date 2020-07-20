@@ -31,7 +31,7 @@ public class AlarmListAdapter extends ArrayAdapter<Alarm> {
     public AlarmListAdapter(Context context, int resource, ArrayList<Alarm> objects) {
         super(context, resource, objects);
         this.context = context;
-        this.resource = resource;
+            this.resource = resource;
         this.objects = objects;
     }
     @Override

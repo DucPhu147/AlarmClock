@@ -91,5 +91,4 @@ public class AlarmMainFragment extends Fragment {
         }
         super.onPause();
     }
-
 }

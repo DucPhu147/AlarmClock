@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
 
     <application
         android:allowBackup="true"
@@ -12,15 +14,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CDTimer" />
-        <activity android:name=".StopWatch.StopWatchFragment" />
         <activity android:name=".MainSetting.MainSettingActivity" />
         <activity
             android:name=".Alarm.CancelAlarmScreen.CancelAlarmScreenActivity"
-            android:autoRemoveFromRecents="true" />
+            android:autoRemoveFromRecents="true"/>
         <activity android:name=".Alarm.SelectCancelAlarmMethod.SelectCancelAlarmMethodActivity" />
         <activity android:name=".Alarm.AlarmSetting.AlarmSettingActivity" />
-        <activity android:name=".Alarm.AlarmMain.AlarmMainFragment" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -30,7 +29,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".Alarm.AlarmClass.AlarmBroadcastReceiver"/>
+
+        <receiver android:name=".Alarm.AlarmClass.AlarmBroadcastReceiver" />
         <receiver android:name=".Alarm.Other.NotificationReceiver" />
     </application>
 

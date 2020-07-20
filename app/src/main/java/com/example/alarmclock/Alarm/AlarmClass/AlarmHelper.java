@@ -124,7 +124,7 @@ public class AlarmHelper {
             Intent intent;
             intent = new Intent(context, AlarmBroadcastReceiver.class);
 
-            pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0);
+            pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, PendingIntent.FLAG_UPDATE_CURRENT);
             alarmManager.cancel(pendingIntent);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -145,7 +145,7 @@ public class AlarmHelper {
         Toast.makeText(context, "Báo thức sẽ kêu sau "+settingVolume/60000+" phút nữa", Toast.LENGTH_SHORT).show();
         pendingIntent = PendingIntent.getBroadcast(context, 1245687, myIntent, PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager = (AlarmManager) context.getSystemService(ALARM_SERVICE);
-        alarmManager.set(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis()+settingVolume , pendingIntent);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis()+settingVolume , pendingIntent);
     }
     public void cancelAlarmSnooze(Context context)
     {
@@ -154,7 +154,7 @@ public class AlarmHelper {
 
         Intent intent;
         intent = new Intent(context, AlarmBroadcastReceiver.class);
-        pendingIntent = PendingIntent.getBroadcast(context, 1245687, intent,0);
+        pendingIntent = PendingIntent.getBroadcast(context, 1245687, intent,PendingIntent.FLAG_UPDATE_CURRENT);
         alarmManager.cancel(pendingIntent);
         AlarmNotification.getInstance().cancelNotification();
     }

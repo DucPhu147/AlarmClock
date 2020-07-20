@@ -29,14 +29,13 @@ public class CancelAlarmScreenActivity extends AppCompatActivity implements Turn
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.alarm_cancel_screen_activity);
-
+        Log.e("cancel alarm screen", "create");
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        Log.e("cancel alarm screen", "create");
         AlarmNotification.getInstance().cancelNotification();
         bundle = getIntent().getExtras();
         AlarmCountDownTimer.getInstance().StartTimer(CancelAlarmScreenActivity.this,bundle);

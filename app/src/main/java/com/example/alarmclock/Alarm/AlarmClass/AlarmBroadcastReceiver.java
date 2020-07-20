@@ -18,7 +18,6 @@ public class AlarmBroadcastReceiver extends BroadcastReceiver {
         myIntent2.putExtras(bundle);
         myIntent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(myIntent2);
-        Log.w("activity","start");
         final boolean vib = bundle.getBoolean("isVibrate");
         final int music = bundle.getInt("Selected music");
         AlarmMusic.getInstance().TurnOnMusic(context, music);

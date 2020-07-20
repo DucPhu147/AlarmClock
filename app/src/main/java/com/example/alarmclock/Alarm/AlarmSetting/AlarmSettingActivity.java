@@ -192,14 +192,13 @@ public class AlarmSettingActivity extends AppCompatActivity implements SelectCan
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode==100)
-        {
-            if(resultCode==RESULT_OK)
-            {
-                cancelMethod=data.getIntExtra("Selected method",0);
-                shakeDifficult=data.getIntExtra("Shake difficult",0);
-                mathDifficult=data.getIntExtra("Math difficult",0);
-                shakeTime=data.getIntExtra("Shake time",5);
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100) {
+            if (resultCode == RESULT_OK) {
+                cancelMethod = data.getIntExtra("Selected method", 0);
+                shakeDifficult = data.getIntExtra("Shake difficult", 0);
+                mathDifficult = data.getIntExtra("Math difficult", 0);
+                shakeTime = data.getIntExtra("Shake time", 5);
                 txtSelectCancelMethod.setText(data.getStringExtra("Selected method text"));
                 alarm.setShakeTime(shakeTime);
                 alarm.setMathDifficult(mathDifficult);

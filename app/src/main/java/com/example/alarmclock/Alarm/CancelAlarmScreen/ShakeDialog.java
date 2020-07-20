@@ -22,10 +22,10 @@ public class ShakeDialog extends DialogFragment implements SensorEventListener {
     private SensorManager sensorManager;
     private Sensor camBienGiaToc;
     private Context context;
-    private float lastX, lastY, lastZ;
+    private float lastX=0, lastY=0, lastZ=0;
     private long lastTime = 0;
-    private int ShakeTime;
-    private int ShakeDifficult; //Lắc trong 2 giây mới đc tính
+    private int ShakeCount;
+    private int ShakeDifficult;
     private boolean isDismiss=false;
     private TurnOffAlarm listener;
     public ShakeDialog(final Context context, int shakeDifficult, int shakeTime) {
@@ -36,7 +36,7 @@ public class ShakeDialog extends DialogFragment implements SensorEventListener {
             ShakeDifficult = 4000;
         else if(shakeDifficult==2)
             ShakeDifficult = 5500;
-        ShakeTime=shakeTime;
+        ShakeCount=shakeTime;
     }
 
     @NonNull
@@ -46,7 +46,7 @@ public class ShakeDialog extends DialogFragment implements SensorEventListener {
         Dialog dialog=new Dialog(context);
         dialog.setContentView(R.layout.alarm_cancel_screen_shake_dialog);
         txtShakeCount=dialog.findViewById(R.id.txtShakeCount);
-        txtShakeCount.setText("Bạn phải lắc " + ShakeTime + " lần");
+        txtShakeCount.setText("Bạn phải lắc " + ShakeCount + " lần");
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         camBienGiaToc = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         if (camBienGiaToc == null ){ //Nếu thiết bị ko hỗ trợ cảm biến
@@ -73,15 +73,18 @@ public class ShakeDialog extends DialogFragment implements SensorEventListener {
                 lastTime = currentTime;
                 float speed = Math.abs((x + y + z - lastX - lastY - lastZ) / diffTime * 10000);
                 if (speed > ShakeDifficult) {
-                    ShakeTime--;
-                    txtShakeCount.setText("Bạn phải lắc " + ShakeTime + " lần");
-                    if (ShakeTime == 0) {
+                    ShakeCount--;
+                    txtShakeCount.setText("Bạn phải lắc " + ShakeCount + " lần");
+                    if (ShakeCount == 0) {
                         isDismiss=true;
                         dismiss();
                         sensorManager.unregisterListener(this,camBienGiaToc);
                         listener.onTurnOffAlarm();
                     }
                 }
+                lastX=x;
+                lastY=y;
+                lastZ=z;
             }
         }
     }

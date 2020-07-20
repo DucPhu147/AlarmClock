@@ -1,5 +1,6 @@
 package com.example.alarmclock.Alarm.Other;
 
+import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -21,7 +22,10 @@ public class AlarmNotification {
         return ourInstance;
     }
     private NotificationManager notificationManager;
+    private NotificationChannel notificationChannel;
     private boolean isSend=false;
+    String CHANNEL_ID = "my_channel_01";
+    CharSequence name = "my_channel";
     private AlarmNotification() {
     }
     public void sendAlarmNotification(Context context, Bundle bundle)
@@ -29,11 +33,10 @@ public class AlarmNotification {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         isSend=true;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            String CHANNEL_ID = "my_channel_01";
-            CharSequence name = "my_channel";
-            int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
-            notificationManager.createNotificationChannel(mChannel);
+            notificationChannel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }else{
+            //notificationManager.createNotificationChannel();
         }
         Intent intent=new Intent(context, NotificationReceiver.class);
         intent.putExtra("cancel alarm using notify","true");
@@ -49,6 +52,7 @@ public class AlarmNotification {
                 .setContentText("BÁO THỨC ĐANG KÊU")
                 .setContentIntent(pendingIntent2)
                 .setSmallIcon(R.drawable.ic_access_alarms_black_24dp)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setOngoing(true)
                 .setAutoCancel(true)
                 .addAction(R.drawable.ic_access_alarms_black_24dp,"TẮT",pendingIntent);
@@ -62,25 +66,26 @@ public class AlarmNotification {
     {
         notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         isSend=true;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+        /*if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             String CHANNEL_ID = "my_channel_01";
             CharSequence name = "my_channel";
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
             notificationManager.createNotificationChannel(mChannel);
-        }
+        }*/
         Intent intent=new Intent(context, NotificationReceiver.class);
         intent.putExtra("cancel alarm using notify","snooze");
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context,0426, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         SharedPreferences preferences = context.getSharedPreferences("MyAlarm", Context.MODE_PRIVATE);
-        long settingVolume= preferences.getLong("alarmSnoozeTime", 60000);
+        long snoozeTime= preferences.getLong("alarmSnoozeTime", 60000);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "my_channel_02")
                 .setContentTitle("Báo thức")
-                .setContentText("Báo thức sẽ kêu sau "+settingVolume/60000+" phút nữa")
+                .setContentText("Báo thức sẽ kêu sau "+snoozeTime/60000+" phút nữa")
                 .setSmallIcon(R.drawable.ic_access_alarms_black_24dp)
                 .setOngoing(true)
+                .setPriority(NotificationCompat.PRIORITY_MAX)
                 .setAutoCancel(true)
                 .addAction(R.drawable.ic_access_alarms_black_24dp,"BỎ QUA",pendingIntent);
 
